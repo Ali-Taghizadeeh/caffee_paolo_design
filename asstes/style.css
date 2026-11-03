@@ -2126,11 +2126,9 @@ button {
 
     padding: 20px;
 
-    background: linear-gradient(
-        to top,
-        rgba(8, 6, 4, .65),
-        transparent 50%
-    );
+    background: linear-gradient(to top,
+            rgba(8, 6, 4, .65),
+            transparent 50%);
 
     opacity: .8;
 
@@ -2165,11 +2163,9 @@ button {
 .gallery-item:hover .gallery-overlay {
     opacity: 1;
 
-    background: linear-gradient(
-        to top,
-        rgba(8, 6, 4, .8),
-        transparent 65%
-    );
+    background: linear-gradient(to top,
+            rgba(8, 6, 4, .8),
+            transparent 65%);
 }
 
 .gallery-item:hover .gallery-overlay i {
