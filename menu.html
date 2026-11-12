@@ -1,0 +1,250 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore the Paolo Cafe menu — specialty coffee, refreshing drinks and handcrafted desserts.">
+    <title>Our Menu | Paolo Cafe</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./asstes/css/menu.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+        <a href="index.html" class="logo">PAOLO<span>.</span></a>
+
+        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="main-nav">
+            <a href="index.html">Home</a>
+            <a href="index.html#about">About</a>
+            <a href="menu.html" class="active">Menu</a>
+            <a href="index.html#gallery">Gallery</a>
+            <a href="index.html#contact">Contact</a>
+            <a href="index.html#reservation" class="nav-cta">Reserve a Table</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- Hero -->
+        <section class="menu-hero">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <span class="eyebrow">A TASTE OF PAOLO</span>
+                <h1>Our <span>Menu</span></h1>
+                <p>Carefully crafted flavors. Beautifully served moments.</p>
+                <a href="#menu-items" class="gold-button">Explore Our Menu</a>
+            </div>
+            <span class="hero-caption">COFFEE · DRINKS · DESSERTS</span>
+        </section>
+
+        <!-- Introduction -->
+        <section class="menu-intro section-padding">
+            <span class="eyebrow">MADE WITH PASSION</span>
+            <h2>Good Taste, <span>Great Moments.</span></h2>
+            <p>
+                From carefully selected coffee beans to freshly prepared desserts,
+                every item at Paolo is made to turn ordinary moments into something special.
+            </p>
+        </section>
+
+        <!-- Menu Products -->
+        <section class="menu-section section-padding" id="menu-items">
+            <div class="section-heading">
+                <div>
+                    <span class="eyebrow">FIND YOUR FAVORITE</span>
+                    <h2>Explore the <span>Menu</span></h2>
+                </div>
+                <p>Fresh ingredients. Honest flavors. Made for you.</p>
+            </div>
+
+            <div class="filter-list">
+                <button class="filter-btn active" data-filter="all">All Items</button>
+                <button class="filter-btn" data-filter="coffee">Hot Coffee</button>
+                <button class="filter-btn" data-filter="cold">Cold Drinks</button>
+                <button class="filter-btn" data-filter="dessert">Desserts</button>
+            </div>
+
+            <div class="product-grid">
+
+                <article class="product-card" data-category="coffee">
+                    <div class="product-image">
+                        <img src="./asstes/images/esspresso.jpg" alt="Espresso coffee" loading="lazy">
+                        <span class="product-tag">CLASSIC</span>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title"><h3>Espresso</h3><span>01</span></div>
+                        <p>A bold and rich shot of coffee with a smooth golden crema.</p>
+                    </div>
+                </article>
+
+                <article class="product-card" data-category="coffee">
+                    <div class="product-image">
+                        <img src="./asstes/images/cappuccino.jpg" alt="Cappuccino" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title"><h3>Cappuccino</h3><span>02</span></div>
+                        <p>Rich espresso balanced with steamed milk and silky foam.</p>
+                    </div>
+                </article>
+
+                <article class="product-card" data-category="coffee">
+                    <div class="product-image">
+                        <img src="./asstes/images/amricano.jpg" alt="Americano coffee" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title"><h3>Americano</h3><span>03</span></div>
+                        <p>A smooth espresso diluted with hot water for a lighter taste.</p>
+                    </div>
+                </article>
+
+                <article class="product-card" data-category="coffee">
+                    <div class="product-image">
+                        <img src="./asstes/images/flatwhite.jpg" alt="Flat white coffee" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title"><h3>Flat White</h3><span>04</span></div>
+                        <p>Double espresso topped with velvety steamed milk.</p>
+                    </div>
+                </article>
+
+                <article class="product-card" data-category="cold">
+                    <div class="product-image">
+                        <img src="./asstes/images/icedlatte.jpg" alt="Iced latte" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title"><h3>Iced Latte</h3><span>05</span></div>
+                        <p>Fresh espresso and cold milk served over ice.</p>
+                    </div>
+                </article>
+
+                <article class="product-card" data-category="cold">
+                    <div class="product-image">
+                        <img src="./asstes/images/goldbrew.jpg" alt="Cold brew coffee" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title"><h3>Cold Brew</h3><span>06</span></div>
+                        <p>Slow-steeped coffee with a naturally smooth finish.</p>
+                    </div>
+                </article>
+
+                <article class="product-card" data-category="cold">
+                    <div class="product-image">
+                        <img src="./asstes/images/mojito.jpg" alt="Fresh mojito" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title"><h3>Mojito</h3><span>07</span></div>
+                        <p>A refreshing blend of mint, citrus and sparkling flavor.</p>
+                    </div>
+                </article>
+
+                <article class="product-card" data-category="cold">
+                    <div class="product-image">
+                        <img src="./asstes/images/icedmatcha.jpg" alt="Iced matcha latte" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title"><h3>Iced Matcha</h3><span>08</span></div>
+                        <p>Premium matcha blended with cold milk and ice.</p>
+                    </div>
+                </article>
+
+                <article class="product-card" data-category="dessert">
+                    <div class="product-image">
+                        <img src="./asstes/images/cheesecake.jpg" alt="Cheesecake dessert" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title"><h3>Cheesecake</h3><span>09</span></div>
+                        <p>Rich and creamy cheesecake with a delicate biscuit base.</p>
+                    </div>
+                </article>
+
+                <article class="product-card" data-category="dessert">
+                    <div class="product-image">
+                        <img src="./asstes/images/tiramisu.jpg" alt="Tiramisu dessert" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title"><h3>Tiramisu</h3><span>10</span></div>
+                        <p>Classic Italian dessert with coffee and mascarpone cream.</p>
+                    </div>
+                </article>
+
+                <article class="product-card" data-category="dessert">
+                    <div class="product-image">
+                        <img src="./asstes/images/chocolatecake.jpg" alt="Chocolate cake" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title"><h3>Chocolate Cake</h3><span>11</span></div>
+                        <p>Layers of soft chocolate cake with rich chocolate cream.</p>
+                    </div>
+                </article>
+
+                <article class="product-card" data-category="dessert">
+                    <div class="product-image">
+                        <img src="./asstes/images/brownie.jpg" alt="Chocolate brownie" loading="lazy">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-title"><h3>Brownie</h3><span>12</span></div>
+                        <p>A soft, fudgy chocolate brownie with an intense cocoa flavor.</p>
+                    </div>
+                </article>
+
+            </div>
+
+            <p class="empty-message" hidden>No items found in this category.</p>
+        </section>
+
+        <!-- Closing Banner -->
+        <section class="menu-banner">
+            <div class="banner-overlay"></div>
+            <div class="banner-content">
+                <span class="eyebrow">THE PAOLO EXPERIENCE</span>
+                <h2>More Than Just Coffee.<br><span>It's a Feeling.</span></h2>
+                <a href="index.html#reservation" class="gold-button">Reserve Your Table</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-main">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">PAOLO<span>.</span></a>
+                <p>Good coffee, great food and moments worth remembering.</p>
+            </div>
+
+            <div class="footer-links">
+                <h4>Explore</h4>
+                <a href="index.html">Home</a>
+                <a href="index.html#about">About Us</a>
+                <a href="menu.html">Our Menu</a>
+                <a href="index.html#gallery">Gallery</a>
+            </div>
+
+            <div class="footer-links">
+                <h4>Visit Us</h4>
+                <a href="index.html#contact">Contact</a>
+                <a href="index.html#reservation">Reservations</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 Paolo Cafe. All rights reserved.</p>
+            <span>CRAFTED WITH PASSION</span>
+        </div>
+    </footer>
+
+    <script src="./asstes/js/menu.js" defer></script>
+</body>
+</html>
