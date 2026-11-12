@@ -1,125 +1,138 @@
-(() => {
+
+document.addEventListener("DOMContentLoaded", () => {
     "use strict";
 
-    const header = document.querySelector(".header");
-    const menuToggle = document.querySelector(".menu-toggle");
-    const navigation = document.querySelector(".nav");
+    // Enable JavaScript-dependent styles
+    document.documentElement.classList.add("js-enabled");
 
-    /* Mobile navigation */
-    if (menuToggle && navigation) {
+    // ----------------------------------------
+    // 01. MOBILE NAVIGATION
+    // ----------------------------------------
+
+    const navToggle = document.querySelector(".nav-toggle");
+    const mainNav = document.querySelector(".main-nav");
+
+    if (navToggle && mainNav) {
         const closeMenu = () => {
-            navigation.classList.remove("show");
-            menuToggle.classList.remove("active");
-            menuToggle.setAttribute("aria-expanded", "false");
-            menuToggle.setAttribute("aria-label", "Open navigation");
+            mainNav.classList.remove("is-open");
+            navToggle.setAttribute("aria-expanded", "false");
         };
 
-        const openMenu = () => {
-            navigation.classList.add("show");
-            menuToggle.classList.add("active");
-            menuToggle.setAttribute("aria-expanded", "true");
-            menuToggle.setAttribute("aria-label", "Close navigation");
-        };
+        navToggle.addEventListener("click", () => {
+            const isOpen = mainNav.classList.toggle("is-open");
 
-        menuToggle.addEventListener("click", () => {
-            const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
-            isOpen ? closeMenu() : openMenu();
+            navToggle.setAttribute("aria-expanded", String(isOpen));
         });
 
-        navigation.addEventListener("click", event => {
-            if (event.target.closest("a")) closeMenu();
+        // Close menu after selecting a link
+        mainNav.querySelectorAll("a").forEach((link) => {
+            link.addEventListener("click", closeMenu);
         });
 
-        document.addEventListener("click", event => {
-            if (!header?.contains(event.target)) closeMenu();
-        });
-
-        document.addEventListener("keydown", event => {
+        // Close menu with Escape key
+        document.addEventListener("keydown", (event) => {
             if (event.key === "Escape") {
                 closeMenu();
-                menuToggle.focus();
             }
         });
 
-        window.addEventListener("resize", () => {
-            if (window.innerWidth > 800) closeMenu();
-        }, { passive: true });
+        // Close menu when clicking outside
+        document.addEventListener("click", (event) => {
+            const clickedInside =
+                mainNav.contains(event.target) ||
+                navToggle.contains(event.target);
+
+            if (!clickedInside) {
+                closeMenu();
+            }
+        });
     }
 
-    /* Keep anchor navigation clear of the fixed header.
-       CSS scroll-behavior handles the smooth animation. */
-    document.querySelectorAll('a[href^="#"]').forEach(link => {
-        link.addEventListener("click", event => {
-            const href = link.getAttribute("href");
-            if (!href || href === "#") {
-                event.preventDefault();
-                return;
-            }
+    // ----------------------------------------
+    // 02. MENU CATEGORY FILTERS
+    // ----------------------------------------
 
-            const target = document.getElementById(href.slice(1));
-            if (!target) return;
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    const productCards = document.querySelectorAll(".product-card");
+    const emptyMessage = document.querySelector(".empty-message");
 
-            event.preventDefault();
-            target.scrollIntoView({ behavior: "smooth", block: "start" });
-            history.replaceState(null, "", href);
-        });
-    });
+    if (filterButtons.length && productCards.length) {
+        filterButtons.forEach((button) => {
+            button.addEventListener("click", () => {
+                const selectedCategory = button.dataset.filter;
+                let visibleCount = 0;
 
-    /* Gallery lightbox */
-    const galleryItems = document.querySelectorAll(".gallery-item");
+                // Update active filter button
+                filterButtons.forEach((item) => {
+                    const isActive = item === button;
 
-    if (galleryItems.length) {
-        const lightbox = document.createElement("div");
-        lightbox.className = "gallery-lightbox";
-        lightbox.setAttribute("role", "dialog");
-        lightbox.setAttribute("aria-modal", "true");
-        lightbox.setAttribute("aria-label", "Gallery image preview");
-        lightbox.innerHTML = `
-            <button class="lightbox-close" type="button" aria-label="Close image preview">&times;</button>
-            <img src="" alt="">
-        `;
-        document.body.append(lightbox);
+                    item.classList.toggle("active", isActive);
+                    item.setAttribute("aria-pressed", String(isActive));
+                });
 
-        const preview = lightbox.querySelector("img");
-        const closeButton = lightbox.querySelector(".lightbox-close");
-        let previousFocus = null;
+                // Filter products
+                productCards.forEach((card) => {
+                    const matches =
+                        selectedCategory === "all" ||
+                        card.dataset.category === selectedCategory;
 
-        const closeLightbox = () => {
-            lightbox.classList.remove("active");
-            document.body.classList.remove("lightbox-open");
-            preview.removeAttribute("src");
-            previousFocus?.focus();
-        };
+                    card.hidden = !matches;
 
-        galleryItems.forEach(item => {
-            item.addEventListener("click", event => {
-                const image = item.querySelector("img");
-                if (!image) return;
+                    if (matches) {
+                        visibleCount++;
+                    }
+                });
 
-                event.preventDefault();
-                previousFocus = item;
-                preview.src = image.currentSrc || image.src;
-                preview.alt = image.alt || "Paolo Cafe gallery image";
-                lightbox.classList.add("active");
-                document.body.classList.add("lightbox-open");
-                closeButton.focus();
+                // Update empty state
+                if (emptyMessage) {
+                    emptyMessage.hidden = visibleCount > 0;
+                }
             });
         });
-
-        closeButton.addEventListener("click", closeLightbox);
-
-        lightbox.addEventListener("click", event => {
-            if (event.target === lightbox) closeLightbox();
-        });
-
-        document.addEventListener("keydown", event => {
-            if (event.key === "Escape" && lightbox.classList.contains("active")) {
-                closeLightbox();
-            }
-        });
     }
 
-    /* Current year */
-    const currentYear = document.querySelector("[data-current-year]");
-    if (currentYear) currentYear.textContent = new Date().getFullYear();
-})();
+    // ----------------------------------------
+    // 03. MENU SCROLL ANIMATION
+    // ----------------------------------------
+
+    const menuSection = document.querySelector(".menu-section");
+
+    if (!menuSection) return;
+
+    const menuCards = menuSection.querySelectorAll(".product-card");
+
+    // Set staggered animation delays
+    menuCards.forEach((card, index) => {
+        const delay = (index % 4) * 100;
+
+        card.style.setProperty("--card-delay", `${delay}ms`);
+    });
+
+    // Check reduced motion preference
+    const prefersReducedMotion = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    if (prefersReducedMotion || !("IntersectionObserver" in window)) {
+        menuSection.classList.add("is-visible");
+        return;
+    }
+
+    // Observe menu section
+    const menuObserver = new IntersectionObserver(
+        (entries, observer) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
+
+                menuSection.classList.add("is-visible");
+
+                observer.unobserve(entry.target);
+            });
+        },
+        {
+            threshold: 0.12
+        }
+    );
+
+    menuObserver.observe(menuSection);
+});
