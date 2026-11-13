@@ -1,0 +1,888 @@
+
+/* =========================
+   STORY PAGE - BASE
+========================= */
+
+:root {
+    --bg: #100d09;
+    --bg-deep: #0b0907;
+    --surface: #17120d;
+    --surface-raised: #21180f;
+    --gold: #d8a84f;
+    --gold-light: #eab65c;
+    --text: #fff0d9;
+    --text-soft: #c5b9a8;
+    --text-muted: #968b7b;
+    --font-display: "Cormorant Garamond", Georgia, serif;
+    --font-body: "DM Sans", Arial, sans-serif;
+    --header-height: 84px;
+    --content-width: 1400px;
+    --page-gutter: 7%;
+    --transition: 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 120px;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font: inherit;
+}
+
+img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.section-padding {
+    padding: 130px var(--page-gutter);
+}
+
+.eyebrow {
+    display: inline-block;
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+    position: fixed;
+    top: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    width: min(90%, 1400px);
+    min-height: var(--header-height);
+    padding: 0 35px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    border: 1px solid rgba(216, 168, 79, 0.15);
+    border-radius: 60px;
+    background: rgba(16, 13, 9, 0.92);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+}
+
+.logo {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.logo-name,
+.footer-logo {
+    color: var(--gold);
+    font-family: var(--font-display);
+    font-size: 31px;
+    font-weight: 700;
+    letter-spacing: 5px;
+}
+
+.logo-subtitle {
+    margin-top: 6px;
+    color: var(--text-muted);
+    font-size: 8px;
+    letter-spacing: 3px;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 27px;
+}
+
+.nav a {
+    position: relative;
+    color: var(--text-soft);
+    font-size: 12px;
+    transition: var(--transition);
+}
+
+.nav a:hover,
+.nav a.active {
+    color: var(--gold);
+}
+
+.nav a.active::after {
+    content: "";
+    position: absolute;
+    bottom: -9px;
+    left: 50%;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--gold);
+    transform: translateX(-50%);
+}
+
+.header-btn,
+.story-button {
+    min-height: 46px;
+    padding: 0 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    border: 1px solid var(--gold);
+    border-radius: 40px;
+    background: var(--gold);
+    color: var(--bg-deep);
+    font-size: 11px;
+    font-weight: 700;
+    transition: var(--transition);
+}
+
+.header-btn:hover,
+.story-button:hover {
+    background: transparent;
+    color: var(--gold);
+    transform: translateY(-3px);
+}
+
+.menu-toggle {
+    display: none;
+    width: 42px;
+    height: 42px;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 23px;
+    height: 2px;
+    margin: 5px auto;
+    background: var(--gold);
+    transition: var(--transition);
+}
+
+/* =========================
+   HERO
+========================= */
+
+.story-hero {
+    position: relative;
+    min-height: 760px;
+    height: 100vh;
+    max-height: 950px;
+    display: flex;
+    align-items: center;
+    padding: 150px var(--page-gutter);
+    overflow: hidden;
+    background:
+        linear-gradient(90deg, rgba(10, 8, 6, 0.94) 0%, rgba(10, 8, 6, 0.68) 48%, rgba(10, 8, 6, 0.18) 100%),
+        url("../images/story_hero.jpg") center 45% / cover no-repeat;
+}
+
+.story-hero::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0;
+    height: 180px;
+    background: linear-gradient(transparent, var(--bg));
+}
+
+.story-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 75% 45%, transparent 0%, rgba(0, 0, 0, 0.2) 70%);
+}
+
+.story-hero-content {
+    position: relative;
+    z-index: 2;
+    width: min(650px, 100%);
+}
+
+.story-hero h1,
+.story-content h2,
+.section-heading h2,
+.culture-content h2,
+.experience-content h2,
+.cta-content h2 {
+    margin: 25px 0;
+    font-family: var(--font-display);
+    font-size: clamp(55px, 7vw, 96px);
+    font-weight: 500;
+    line-height: 0.95;
+}
+
+.story-hero h1 em,
+.story-content h2 em,
+.section-heading h2 em,
+.culture-content h2 em,
+.experience-content h2 em,
+.cta-content h2 em {
+    color: var(--gold);
+    font-weight: 400;
+}
+
+.story-hero-content p {
+    max-width: 450px;
+    color: var(--text-soft);
+    font-size: 14px;
+    line-height: 2;
+}
+
+.hero-link,
+.text-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 35px;
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.hero-link i,
+.text-link i {
+    transition: var(--transition);
+}
+
+.hero-link:hover i,
+.text-link:hover i {
+    transform: translateY(5px);
+}
+
+.hero-side-text {
+    position: absolute;
+    z-index: 2;
+    right: 35px;
+    bottom: 120px;
+    color: rgba(255, 240, 217, 0.55);
+    font-size: 9px;
+    letter-spacing: 4px;
+    writing-mode: vertical-rl;
+}
+
+/* =========================
+   BEGINNING
+========================= */
+
+.story-beginning {
+    display: grid;
+    grid-template-columns: 1fr 0.9fr;
+    align-items: center;
+    gap: 10%;
+    max-width: 1600px;
+    margin: auto;
+}
+
+.story-image {
+    position: relative;
+    height: 620px;
+    border-radius: 220px 220px 20px 20px;
+    overflow: hidden;
+}
+
+.story-image img {
+    transition: transform 0.8s ease;
+}
+
+.story-image:hover img {
+    transform: scale(1.05);
+}
+
+.image-caption {
+    position: absolute;
+    bottom: 25px;
+    left: 25px;
+    padding: 12px 18px;
+    border: 1px solid rgba(216, 168, 79, 0.3);
+    border-radius: 30px;
+    background: rgba(11, 9, 7, 0.75);
+    color: var(--gold);
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+.story-content {
+    max-width: 540px;
+}
+
+.story-content h2,
+.culture-content h2,
+.experience-content h2 {
+    font-size: clamp(48px, 5vw, 70px);
+    line-height: 1;
+}
+
+.story-content p,
+.culture-content p,
+.experience-content p {
+    margin-bottom: 20px;
+    color: var(--text-soft);
+    font-size: 13px;
+    line-height: 2.2;
+}
+
+.story-signature {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 35px;
+}
+
+.story-signature span {
+    color: var(--text-muted);
+    font-size: 11px;
+}
+
+.story-signature strong {
+    color: var(--gold);
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 500;
+}
+
+/* =========================
+   PHILOSOPHY
+========================= */
+
+.philosophy-section {
+    background: var(--bg-deep);
+}
+
+.section-heading {
+    max-width: 650px;
+    margin: 0 auto 70px;
+    text-align: center;
+}
+
+.section-heading h2 {
+    margin: 18px 0;
+    font-size: clamp(48px, 5vw, 68px);
+}
+
+.section-heading p {
+    color: var(--text-muted);
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.philosophy-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    max-width: var(--content-width);
+    margin: auto;
+}
+
+.philosophy-card {
+    position: relative;
+    min-height: 310px;
+    padding: 45px 35px;
+    border: 1px solid rgba(216, 168, 79, 0.12);
+    border-radius: 24px;
+    background: var(--surface);
+    transition: var(--transition);
+}
+
+.philosophy-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(216, 168, 79, 0.5);
+    background: var(--surface-raised);
+}
+
+.card-number {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    color: rgba(216, 168, 79, 0.35);
+    font-family: var(--font-display);
+    font-size: 25px;
+}
+
+.philosophy-icon {
+    width: 55px;
+    height: 55px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 30px;
+    border: 1px solid rgba(216, 168, 79, 0.35);
+    border-radius: 50%;
+    color: var(--gold);
+    font-size: 19px;
+}
+
+.philosophy-card h3 {
+    margin-bottom: 15px;
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 600;
+}
+
+.philosophy-card p {
+    color: var(--text-muted);
+    font-size: 12px;
+    line-height: 2;
+}
+
+/* =========================
+   COFFEE CULTURE
+========================= */
+
+.culture-section {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    min-height: 650px;
+    background: var(--surface);
+}
+
+.culture-image {
+    min-height: 650px;
+    overflow: hidden;
+}
+
+.culture-image img {
+    transition: transform 0.8s ease;
+}
+
+.culture-image:hover img {
+    transform: scale(1.04);
+}
+
+.culture-content {
+    align-self: center;
+    max-width: 620px;
+    padding: 90px 12%;
+}
+
+.culture-content .story-button {
+    margin-top: 20px;
+}
+
+/* =========================
+   EXPERIENCE
+========================= */
+
+.experience-section {
+    display: grid;
+    grid-template-columns: 0.85fr 1fr;
+    align-items: center;
+    gap: 10%;
+    max-width: 1600px;
+    margin: auto;
+}
+
+.experience-content {
+    max-width: 500px;
+}
+
+.experience-image {
+    height: 520px;
+    border-radius: 24px;
+    overflow: hidden;
+}
+
+.experience-image img {
+    transition: transform 0.8s ease;
+}
+
+.experience-image:hover img {
+    transform: scale(1.04);
+}
+
+/* =========================
+   CTA
+========================= */
+
+.story-cta {
+    position: relative;
+    min-height: 570px;
+    display: grid;
+    place-items: center;
+    padding: 100px 7%;
+    overflow: hidden;
+    text-align: center;
+    background: url("../images/story_cta.jpg") center / cover no-repeat;
+}
+
+.cta-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(11, 9, 7, 0.82);
+}
+
+.cta-content {
+    position: relative;
+    z-index: 1;
+}
+
+.cta-content h2 {
+    font-size: clamp(50px, 6vw, 78px);
+}
+
+.cta-content p {
+    margin-bottom: 30px;
+    color: var(--text-soft);
+    font-size: 13px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+    padding: 80px var(--page-gutter) 25px;
+    background: var(--bg-deep);
+}
+
+.footer-top {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 50px;
+    max-width: var(--content-width);
+    margin: auto;
+    padding-bottom: 65px;
+}
+
+.footer-brand p {
+    max-width: 260px;
+    margin: 20px 0;
+    color: var(--text-muted);
+    font-size: 12px;
+    line-height: 2;
+}
+
+.footer-socials {
+    display: flex;
+    gap: 12px;
+}
+
+.footer-socials a {
+    width: 35px;
+    height: 35px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(216, 168, 79, 0.25);
+    border-radius: 50%;
+    color: var(--gold);
+    transition: var(--transition);
+}
+
+.footer-socials a:hover {
+    background: var(--gold);
+    color: var(--bg);
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.footer-column h3 {
+    margin-bottom: 10px;
+    color: var(--gold);
+    font-family: var(--font-display);
+    font-size: 23px;
+}
+
+.footer-column a,
+.footer-column span {
+    color: var(--text-muted);
+    font-size: 11px;
+    transition: var(--transition);
+}
+
+.footer-column a:hover {
+    color: var(--gold);
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding-top: 25px;
+    border-top: 1px solid rgba(216, 168, 79, 0.12);
+    color: var(--text-muted);
+    font-size: 10px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1100px) {
+    .header {
+        padding: 0 25px;
+    }
+
+    .nav {
+        gap: 16px;
+    }
+
+    .nav a {
+        font-size: 11px;
+    }
+
+    .story-beginning,
+    .experience-section {
+        gap: 6%;
+    }
+
+    .story-image {
+        height: 520px;
+    }
+
+    .culture-content {
+        padding: 70px 9%;
+    }
+}
+
+@media (max-width: 900px) {
+    .header {
+        min-height: 72px;
+    }
+
+    .menu-toggle {
+        display: block;
+        order: 3;
+    }
+
+    .header-btn {
+        margin-left: auto;
+    }
+
+    .nav {
+        position: absolute;
+        top: calc(100% + 12px);
+        left: 0;
+        right: 0;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 15px;
+        border: 1px solid rgba(216, 168, 79, 0.2);
+        border-radius: 24px;
+        background: rgba(16, 13, 9, 0.98);
+    }
+
+    .nav.show {
+        display: flex;
+    }
+
+    .nav a {
+        padding: 14px;
+        font-size: 13px;
+    }
+
+    .nav a.active::after {
+        display: none;
+    }
+
+    .menu-toggle.active span:first-child {
+        transform: translateY(7px) rotate(45deg);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.active span:last-child {
+        transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .story-beginning,
+    .experience-section {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .story-image {
+        height: 470px;
+        border-radius: 150px 150px 20px 20px;
+    }
+
+    .philosophy-grid {
+        gap: 15px;
+    }
+
+    .philosophy-card {
+        padding: 35px 25px;
+    }
+
+    .footer-top {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 650px) {
+    :root {
+        --page-gutter: 6%;
+    }
+
+    .section-padding {
+        padding-top: 85px;
+        padding-bottom: 85px;
+    }
+
+    .header {
+        top: 12px;
+        width: 94%;
+        min-height: 65px;
+        padding: 0 18px;
+    }
+
+    .logo-name {
+        font-size: 26px;
+    }
+
+    .header-btn {
+        min-height: 38px;
+        padding: 0 15px;
+        font-size: 10px;
+    }
+
+    .story-hero {
+        min-height: 680px;
+        height: 90vh;
+        padding-top: 130px;
+        background-position: 60% center;
+    }
+
+    .story-hero h1 {
+        font-size: clamp(55px, 14vw, 78px);
+    }
+
+    .story-hero-content p {
+        font-size: 12px;
+    }
+
+    .hero-side-text {
+        display: none;
+    }
+
+    .story-beginning,
+    .experience-section,
+    .culture-section {
+        grid-template-columns: 1fr;
+        gap: 45px;
+    }
+
+    .story-image {
+        height: 430px;
+        border-radius: 170px 170px 20px 20px;
+    }
+
+    .story-content h2,
+    .culture-content h2,
+    .experience-content h2 {
+        font-size: 52px;
+    }
+
+    .philosophy-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .philosophy-card {
+        min-height: auto;
+        padding: 35px 28px;
+    }
+
+    .section-heading {
+        margin-bottom: 40px;
+    }
+
+    .culture-image {
+        min-height: 380px;
+        height: 380px;
+    }
+
+    .culture-content {
+        padding: 20px var(--page-gutter) 80px;
+    }
+
+    .experience-section {
+        gap: 35px;
+    }
+
+    .experience-image {
+        height: 380px;
+    }
+
+    .story-cta {
+        min-height: 480px;
+    }
+
+    .footer {
+        padding-top: 65px;
+    }
+
+    .footer-top {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px 20px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+@media (max-width: 420px) {
+    .header-btn {
+        display: none;
+    }
+
+    .story-hero h1 {
+        font-size: 54px;
+    }
+
+    .story-image {
+        height: 350px;
+    }
+
+    .footer-top {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}
