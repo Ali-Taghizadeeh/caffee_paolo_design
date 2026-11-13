@@ -1531,3 +1531,299 @@ footer[id] {
         transition-duration: 0.01ms !important;
     }
 }
+
+/* =========================================================
+   14. COMMUNITY SLIDESHOW
+========================================================= */
+
+.community-section {
+    position: relative;
+    overflow: hidden;
+    padding: 110px var(--page-gutter) 120px;
+    background:
+        radial-gradient(circle at 15% 40%, rgba(216, 168, 79, 0.055), transparent 32%),
+        linear-gradient(145deg, #17120d, #100d09 70%);
+    border-top: 1px solid rgba(216, 168, 79, 0.13);
+}
+
+.community-container {
+    width: 100%;
+    max-width: var(--content-width);
+    margin: auto;
+}
+
+.community-heading {
+    max-width: 650px;
+    margin: 0 auto 55px;
+    text-align: center;
+}
+
+.community-heading .section-label {
+    justify-content: center;
+}
+
+.community-heading h2 {
+    color: var(--color-text);
+    font-family: var(--font-display);
+    font-size: clamp(35px, 4vw, 51px);
+    font-weight: 600;
+}
+
+.community-heading h2 span {
+    color: var(--color-gold-light);
+}
+
+.community-heading p {
+    max-width: 550px;
+    margin: 15px auto 0;
+    color: var(--color-text-muted);
+    font-size: 14px;
+    line-height: 1.9;
+}
+
+.community-carousel {
+    overflow: hidden;
+    padding: 8px 2px 20px;
+}
+
+.community-track {
+    display: flex;
+    gap: 25px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    cursor: grab;
+}
+
+.community-track::-webkit-scrollbar {
+    display: none;
+}
+
+.community-track.is-dragging {
+    cursor: grabbing;
+    scroll-behavior: auto;
+    scroll-snap-type: none;
+}
+
+.community-card {
+    flex: 0 0 calc((100% - 50px) / 3);
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid rgba(216, 168, 79, 0.17);
+    border-radius: 25px;
+    background: linear-gradient(145deg, #21180f, #17120d);
+    scroll-snap-align: start;
+    transition: transform 0.35s ease, border-color 0.35s ease,
+                box-shadow 0.35s ease;
+}
+
+.community-card:hover {
+    transform: translateY(-7px);
+    border-color: rgba(216, 168, 79, 0.55);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.3);
+}
+
+.community-image {
+    position: relative;
+    display: block;
+    height: 290px;
+    overflow: hidden;
+    background: var(--color-surface);
+}
+
+.community-image::after {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(8, 6, 4, 0.55), transparent 45%);
+    content: "";
+    pointer-events: none;
+}
+
+.community-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s ease;
+}
+
+.community-card:hover .community-image img {
+    transform: scale(1.07);
+}
+
+.community-image-label {
+    position: absolute;
+    z-index: 1;
+    bottom: 18px;
+    left: 20px;
+    padding: 7px 13px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 30px;
+    background: rgba(16, 13, 9, 0.65);
+    color: #f1d5a2;
+    font-size: 10px;
+    letter-spacing: 1px;
+    backdrop-filter: blur(10px);
+}
+
+.community-card-content {
+    padding: 23px;
+}
+
+.community-user {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+.user-avatar {
+    display: grid;
+    width: 43px;
+    height: 43px;
+    flex-shrink: 0;
+    place-items: center;
+    border: 1px solid rgba(216, 168, 79, 0.5);
+    border-radius: 50%;
+    background: rgba(216, 168, 79, 0.1);
+    color: var(--color-gold-light);
+    font-family: var(--font-display);
+    font-size: 21px;
+}
+
+.community-user h3 {
+    color: #f2e4cf;
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.community-user div > span {
+    display: block;
+    margin-top: 2px;
+    color: var(--color-text-muted);
+    font-size: 10px;
+}
+
+.community-card-content > p {
+    min-height: 48px;
+    margin-top: 17px;
+    color: #b8aa98;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.community-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.community-arrows {
+    display: flex;
+    gap: 12px;
+}
+
+.community-arrow {
+    display: grid;
+    width: 48px;
+    height: 48px;
+    place-items: center;
+    border: 1px solid rgba(216, 168, 79, 0.4);
+    border-radius: 50%;
+    background: rgba(216, 168, 79, 0.05);
+    color: var(--color-gold-light);
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease,
+                transform 0.3s ease;
+}
+
+.community-arrow:hover {
+    transform: translateY(-3px);
+    background: var(--color-gold);
+    color: #171008;
+}
+
+.community-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    padding: 14px 23px;
+    border: 1px solid rgba(216, 168, 79, 0.45);
+    border-radius: 40px;
+    color: #e9c98f;
+    font-family: var(--font-display);
+    font-size: 17px;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.community-more i {
+    transition: transform 0.3s ease;
+}
+
+.community-more:hover {
+    background: var(--color-gold);
+    color: #171008;
+}
+
+.community-more:hover i {
+    transform: translateX(5px);
+}
+
+/* Community responsive */
+
+@media (max-width: 1000px) {
+    .community-card {
+        flex-basis: calc((100% - 25px) / 2);
+    }
+
+    .community-image {
+        height: 260px;
+    }
+}
+
+@media (max-width: 650px) {
+    .community-section {
+        padding: 80px 6%;
+    }
+
+    .community-heading {
+        margin-bottom: 35px;
+    }
+
+    .community-track {
+        gap: 15px;
+    }
+
+    .community-card {
+        flex-basis: 85%;
+    }
+
+    .community-image {
+        height: 260px;
+    }
+
+    .community-card-content {
+        padding: 20px;
+    }
+
+    .community-controls {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 380px) {
+    .community-card {
+        flex-basis: 92%;
+    }
+
+    .community-image {
+        height: 220px;
+    }
+
+    .community-more {
+        font-size: 15px;
+    }
+}

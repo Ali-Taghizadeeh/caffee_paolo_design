@@ -1,0 +1,373 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Share your favorite Paolo Cafe moments, photos and stories with our community.">
+    <title>Community | Paolo Cafe</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="./asstes/css/community.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="index.html" class="logo">
+                <span class="logo-name">PAOLO</span>
+                <span class="logo-subtitle">CAFE · SINCE 2024</span>
+            </a>
+
+            <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <nav class="main-nav">
+                <a href="index.html">Home</a>
+                <a href="about.html">About us</a>
+                <a href="menu.html">Menu</a>
+                <a href="reservation.html">Reservation</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="community.html" class="active">Community</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+
+            <a href="reservation.html" class="header-cta">Book a Table <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- Hero -->
+        <section class="community-hero">
+            <div class="hero-overlay"></div>
+
+            <div class="hero-content">
+                <span class="eyebrow"><span></span> THE PAOLO COMMUNITY</span>
+                <h1>Your Moments.<br><em>Our Story.</em></h1>
+                <p>
+                    Every cup, every conversation, every little moment
+                    makes Paolo special. Share yours with us.
+                </p>
+
+                <div class="hero-actions">
+                    <a href="#share" class="btn-primary">Share Your Moment <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    <a href="#community-feed" class="btn-text">Explore Stories <i class="fa-solid fa-arrow-down"></i></a>
+                </div>
+
+                <div class="hero-note">
+                    <div class="note-avatars">
+                        <span>J</span>
+                        <span>M</span>
+                        <span>A</span>
+                        <span><i class="fa-solid fa-plus"></i></span>
+                    </div>
+                    <p>Made special by people like you.</p>
+                </div>
+            </div>
+
+            <div class="hero-side-text">GOOD COFFEE · GOOD PEOPLE · GOOD MOMENTS</div>
+        </section>
+
+        <!-- Intro -->
+        <section class="community-intro section-wrap">
+            <div class="intro-heading">
+                <span class="eyebrow">A LITTLE SPACE FOR YOU</span>
+                <h2>More than coffee.<br><em>A shared experience.</em></h2>
+            </div>
+
+            <div class="intro-description">
+                <p>
+                    Paolo is built around the moments we create together.
+                    From your favorite corner to that perfect cup of coffee,
+                    we would love to see Paolo through your eyes.
+                </p>
+                <span class="intro-signature">With love, Paolo.</span>
+            </div>
+        </section>
+
+        <!-- Community Feed -->
+        <section class="community-feed section-wrap" id="community-feed">
+
+            <div class="section-heading">
+                <div>
+                    <span class="eyebrow">FROM OUR GUESTS</span>
+                    <h2>The Community <em>Wall</em></h2>
+                    <p>A collection of moments shared by our lovely guests.</p>
+                </div>
+
+                <a href="#share" class="outline-btn">
+                    <i class="fa-solid fa-plus"></i> Share yours
+                </a>
+            </div>
+
+            <div class="feed-toolbar">
+                <div class="feed-filters">
+                    <button class="filter-btn active" data-filter="all">All moments</button>
+                    <button class="filter-btn" data-filter="coffee">Coffee</button>
+                    <button class="filter-btn" data-filter="interior">The place</button>
+                    <button class="filter-btn" data-filter="dessert">Desserts</button>
+                </div>
+
+                <span class="feed-count"><i class="fa-solid fa-camera"></i> Guest moments</span>
+            </div>
+
+            <div class="community-grid" id="communityGrid">
+
+                <article class="community-card" data-category="coffee">
+                    <div class="post-image">
+                        <img src="./asstes/images/1.webp" alt="Coffee served at Paolo Cafe">
+                        <span class="post-category">COFFEE MOMENT</span>
+                    </div>
+                    <div class="post-content">
+                        <div class="post-user">
+                            <div class="user-avatar avatar-one">E</div>
+                            <div><strong>Emily Rose</strong><span>2 days ago</span></div>
+                        </div>
+                        <p class="post-caption">Slow mornings and the perfect cup. This is my kind of weekend. ☕</p>
+                        <div class="post-footer">
+                            <span><i class="fa-solid fa-location-dot"></i> Paolo Cafe</span>
+                            <button class="like-btn" aria-label="Like this post"><i class="fa-regular fa-heart"></i> <span>24</span></button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="community-card" data-category="interior">
+                    <div class="post-image">
+                        <img src="./asstes/images/2.webp" alt="Warm interior of Paolo Cafe">
+                        <span class="post-category">THE PLACE</span>
+                    </div>
+                    <div class="post-content">
+                        <div class="post-user">
+                            <div class="user-avatar avatar-two">J</div>
+                            <div><strong>James Miller</strong><span>3 days ago</span></div>
+                        </div>
+                        <p class="post-caption">Found my new favorite corner. The atmosphere here is something else.</p>
+                        <div class="post-footer">
+                            <span><i class="fa-solid fa-location-dot"></i> Paolo Cafe</span>
+                            <button class="like-btn" aria-label="Like this post"><i class="fa-regular fa-heart"></i> <span>18</span></button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="community-card" data-category="dessert">
+                    <div class="post-image">
+                        <img src="./asstes/images/3.webp" alt="Dessert at Paolo Cafe">
+                        <span class="post-category">SWEET MOMENT</span>
+                    </div>
+                    <div class="post-content">
+                        <div class="post-user">
+                            <div class="user-avatar avatar-three">S</div>
+                            <div><strong>Sophia Lane</strong><span>5 days ago</span></div>
+                        </div>
+                        <p class="post-caption">A little sweetness to make the day better. Absolutely loved it!</p>
+                        <div class="post-footer">
+                            <span><i class="fa-solid fa-location-dot"></i> Paolo Cafe</span>
+                            <button class="like-btn" aria-label="Like this post"><i class="fa-regular fa-heart"></i> <span>31</span></button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="community-card" data-category="coffee">
+                    <div class="post-image">
+                        <img src="./asstes/images/4.webp" alt="Specialty coffee at Paolo Cafe">
+                        <span class="post-category">COFFEE MOMENT</span>
+                    </div>
+                    <div class="post-content">
+                        <div class="post-user">
+                            <div class="user-avatar avatar-four">L</div>
+                            <div><strong>Lucas Brown</strong><span>1 week ago</span></div>
+                        </div>
+                        <p class="post-caption">Good coffee, good music and no rush. Thank you, Paolo.</p>
+                        <div class="post-footer">
+                            <span><i class="fa-solid fa-location-dot"></i> Paolo Cafe</span>
+                            <button class="like-btn" aria-label="Like this post"><i class="fa-regular fa-heart"></i> <span>12</span></button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="community-card" data-category="interior">
+                    <div class="post-image">
+                        <img src="./asstes/images/5.webp" alt="Cozy seating area at Paolo Cafe">
+                        <span class="post-category">THE PLACE</span>
+                    </div>
+                    <div class="post-content">
+                        <div class="post-user">
+                            <div class="user-avatar avatar-five">A</div>
+                            <div><strong>Anna Clark</strong><span>1 week ago</span></div>
+                        </div>
+                        <p class="post-caption">Some places just make you feel at home. This is one of them.</p>
+                        <div class="post-footer">
+                            <span><i class="fa-solid fa-location-dot"></i> Paolo Cafe</span>
+                            <button class="like-btn" aria-label="Like this post"><i class="fa-regular fa-heart"></i> <span>27</span></button>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="community-card" data-category="dessert">
+                    <div class="post-image">
+                        <img src="./asstes/images/6.webp" alt="Handcrafted dessert at Paolo Cafe">
+                        <span class="post-category">SWEET MOMENT</span>
+                    </div>
+                    <div class="post-content">
+                        <div class="post-user">
+                            <div class="user-avatar avatar-six">M</div>
+                            <div><strong>Michael Scott</strong><span>2 weeks ago</span></div>
+                        </div>
+                        <p class="post-caption">The little details make all the difference. Loved every bite.</p>
+                        <div class="post-footer">
+                            <span><i class="fa-solid fa-location-dot"></i> Paolo Cafe</span>
+                            <button class="like-btn" aria-label="Like this post"><i class="fa-regular fa-heart"></i> <span>16</span></button>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- Share Section -->
+        <section class="share-section section-wrap" id="share">
+            <div class="share-visual">
+                <img src="./asstes/images/7.jpg" alt="A cozy coffee moment at Paolo Cafe">
+                <div class="visual-caption">
+                    <i class="fa-solid fa-quote-left"></i>
+                    <p>Every moment has a story.<br>We would love to hear yours.</p>
+                    <span>THE PAOLO TEAM</span>
+                </div>
+            </div>
+
+            <div class="share-content">
+                <span class="eyebrow">YOUR STORY STARTS HERE</span>
+                <h2>Share a little<br><em>Paolo moment.</em></h2>
+                <p class="share-description">
+                    Got a lovely photo or a story from your visit?
+                    Share it with our community and let us be part of your memories.
+                </p>
+
+                <form class="share-form" id="communityForm">
+
+                    <div class="form-group">
+                        <label for="guestName">Your name</label>
+                        <input type="text" id="guestName" name="guestName" placeholder="How should we call you?" required maxlength="40">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="guestPhoto">Your photo</label>
+                        <label class="upload-box" for="guestPhoto">
+                            <span class="upload-icon"><i class="fa-solid fa-cloud-arrow-up"></i></span>
+                            <span class="upload-title">Choose a photo to share</span>
+                            <span class="upload-hint">JPG, PNG or WEBP · Max 5MB</span>
+                            <span class="upload-filename" id="fileName">No file selected</span>
+                        </label>
+                        <input type="file" id="guestPhoto" name="guestPhoto" accept="image/jpeg,image/png,image/webp" hidden required>
+                        <div class="image-preview" id="imagePreview"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="guestCategory">What's your moment about?</label>
+                        <select id="guestCategory" name="category" required>
+                            <option value="" disabled selected>Select a category</option>
+                            <option value="coffee">Coffee</option>
+                            <option value="interior">The place</option>
+                            <option value="dessert">Desserts</option>
+                            <option value="other">Something else</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="guestMessage">Your story</label>
+                        <textarea id="guestMessage" name="message" rows="4" placeholder="Tell us about your experience..." required maxlength="300"></textarea>
+                        <span class="character-count"><span id="charCount">0</span>/300</span>
+                    </div>
+
+                    <div class="rating-field">
+                        <span class="rating-label">How was your experience?</span>
+                        <div class="rating-stars" id="ratingStars" role="group" aria-label="Rate your experience">
+                            <button type="button" data-rating="1" aria-label="1 star"><i class="fa-regular fa-star"></i></button>
+                            <button type="button" data-rating="2" aria-label="2 stars"><i class="fa-regular fa-star"></i></button>
+                            <button type="button" data-rating="3" aria-label="3 stars"><i class="fa-regular fa-star"></i></button>
+                            <button type="button" data-rating="4" aria-label="4 stars"><i class="fa-regular fa-star"></i></button>
+                            <button type="button" data-rating="5" aria-label="5 stars"><i class="fa-regular fa-star"></i></button>
+                        </div>
+                    </div>
+
+                    <label class="consent-check">
+                        <input type="checkbox" id="guestConsent" required>
+                        <span>I agree to share this photo and story with the Paolo community.</span>
+                    </label>
+
+                    <button type="submit" class="submit-btn">
+                        Share Your Moment <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </button>
+
+                    <p class="form-feedback" id="formFeedback" role="status" aria-live="polite"></p>
+
+                    <p class="form-disclaimer">
+                        Your post will be submitted for review before appearing publicly.
+                    </p>
+                </form>
+            </div>
+        </section>
+
+        <!-- Closing -->
+        <section class="community-closing">
+            <span class="eyebrow">SEE YOU AT PAOLO</span>
+            <h2>Good moments are<br><em>better together.</em></h2>
+            <a href="reservation.html" class="btn-primary">Come Visit Us <i class="fa-solid fa-arrow-right"></i></a>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-main">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <span class="logo-name">PAOLO</span>
+                    <span class="logo-subtitle">CAFE · SINCE 2024</span>
+                </a>
+                <p>A little place for great coffee,<br>good food and better moments.</p>
+            </div>
+
+            <div class="footer-column">
+                <h3>Explore</h3>
+                <a href="index.html">Home</a>
+                <a href="about.html">About us</a>
+                <a href="menu.html">Our Menu</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="community.html">Community</a>
+            </div>
+
+            <div class="footer-column">
+                <h3>Get in touch</h3>
+                <a href="reservation.html">Reservation</a>
+                <a href="contact.html">Contact us</a>
+                <a href="#">Instagram</a>
+                <a href="#">Location</a>
+            </div>
+
+            <div class="footer-newsletter">
+                <h3>Stay in the loop</h3>
+                <p>Follow us for coffee, stories and special moments.</p>
+                <a href="#" class="social-link"><i class="fa-brands fa-instagram"></i> Follow on Instagram</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span>© 2026 Paolo Cafe. All rights reserved.</span>
+            <span>Made with <i class="fa-solid fa-heart"></i> and coffee.</span>
+        </div>
+    </footer>
+
+    <script src="./asstes/js/community.js"></script>
+</body>
+
+</html>

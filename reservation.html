@@ -1,0 +1,398 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Reserve your table at Paolo Cafe and enjoy exceptional coffee, food and atmosphere.">
+    <meta name="theme-color" content="#100d09">
+
+    <title>Reservation | Paolo Cafe</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./asstes/css/reservation.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="header-inner">
+
+            <a href="index.html" class="logo" aria-label="Paolo Cafe Home">
+                <span class="logo-name">PAOLO</span>
+                <span class="logo-subtitle">SINCE 2024</span>
+            </a>
+
+            <button class="menu-toggle" id="menu-toggle"
+                aria-label="Open navigation menu"
+                aria-expanded="false"
+                aria-controls="main-nav">
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="main-nav" id="main-nav">
+                <a href="index.html">Home</a>
+                <a href="about.html">About us</a>
+                <a href="menu.html">Menu</a>
+                <a href="reservation.html" class="active">Reservation</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+
+            <a href="menu.html" class="order-btn">Order Now <span>↗</span></a>
+
+        </div>
+    </header>
+
+
+    <main>
+
+        <!-- Reservation Hero -->
+        <section class="reservation-hero">
+
+            <div class="hero-content">
+
+                <span class="eyebrow">
+                    <span></span>
+                    YOUR PAOLO EXPERIENCE
+                </span>
+
+                <h1>A Table Worth <em>Waiting For.</em></h1>
+
+                <p>
+                    Make time for good coffee, delicious moments
+                    and conversations that matter.
+                </p>
+
+                <a href="#booking" class="hero-link">
+                    Reserve Your Table
+                    <span>↓</span>
+                </a>
+
+            </div>
+
+            <div class="hero-decoration" aria-hidden="true">
+                <span>RESERVE</span>
+            </div>
+
+            <div class="hero-caption">
+                <span>GOOD MOMENTS START HERE</span>
+                <span>PAOLO CAFE — 2026</span>
+            </div>
+
+        </section>
+
+
+        <!-- Booking Section -->
+        <section class="booking-section" id="booking">
+
+            <div class="booking-layout">
+
+                <!-- Booking Introduction -->
+                <div class="booking-info">
+
+                    <span class="section-label">MAKE IT A MOMENT</span>
+
+                    <h2>Let's Save You<br><em>A Seat.</em></h2>
+
+                    <p>
+                        Whether it's a casual coffee date, a special
+                        celebration or a quiet afternoon, we'd love
+                        to have you with us.
+                    </p>
+
+                    <div class="info-divider"></div>
+
+                    <div class="booking-detail">
+                        <span class="detail-icon">01</span>
+                        <div>
+                            <h3>Choose Your Time</h3>
+                            <p>Pick a date and time that works for you.</p>
+                        </div>
+                    </div>
+
+                    <div class="booking-detail">
+                        <span class="detail-icon">02</span>
+                        <div>
+                            <h3>Tell Us About Your Visit</h3>
+                            <p>Let us know how many guests are joining.</p>
+                        </div>
+                    </div>
+
+                    <div class="booking-detail">
+                        <span class="detail-icon">03</span>
+                        <div>
+                            <h3>Enjoy Paolo</h3>
+                            <p>We'll take care of the rest.</p>
+                        </div>
+                    </div>
+
+                    <div class="booking-note">
+                        <span class="note-icon">✦</span>
+                        <p>
+                            Planning something special?
+                            Add a note to your reservation and
+                            we'll do our best to make it memorable.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <!-- Booking Form -->
+                <div class="booking-card">
+
+                    <div class="form-heading">
+                        <div>
+                            <span class="section-label">BOOK YOUR EXPERIENCE</span>
+                            <h2>Make a <em>Reservation</em></h2>
+                        </div>
+
+                        <span class="form-mark">P.</span>
+                    </div>
+
+                    <form id="reservation-form">
+
+                        <div class="form-row">
+
+                            <div class="form-group">
+                                <label for="full-name">Full Name</label>
+                                <input
+                                    type="text"
+                                    id="full-name"
+                                    name="fullName"
+                                    placeholder="Your name"
+                                    autocomplete="name"
+                                    required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input
+                                    type="tel"
+                                    id="phone"
+                                    name="phone"
+                                    placeholder="Your phone number"
+                                    autocomplete="tel"
+                                    required>
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-row">
+
+                            <div class="form-group">
+                                <label for="reservation-date">Date</label>
+                                <input
+                                    type="date"
+                                    id="reservation-date"
+                                    name="date"
+                                    required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="reservation-time">Time</label>
+                                <select
+                                    id="reservation-time"
+                                    name="time"
+                                    required>
+
+                                    <option value="" disabled selected>
+                                        Select a time
+                                    </option>
+
+                                    <option value="09:00">09:00 AM</option>
+                                    <option value="10:00">10:00 AM</option>
+                                    <option value="11:00">11:00 AM</option>
+                                    <option value="12:00">12:00 PM</option>
+                                    <option value="13:00">01:00 PM</option>
+                                    <option value="14:00">02:00 PM</option>
+                                    <option value="15:00">03:00 PM</option>
+                                    <option value="16:00">04:00 PM</option>
+                                    <option value="17:00">05:00 PM</option>
+                                    <option value="18:00">06:00 PM</option>
+                                    <option value="19:00">07:00 PM</option>
+                                    <option value="20:00">08:00 PM</option>
+                                    <option value="21:00">09:00 PM</option>
+
+                                </select>
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group guests-group">
+                            <label for="guests">Number of Guests</label>
+
+                            <select id="guests" name="guests" required>
+                                <option value="" disabled selected>
+                                    Select guests
+                                </option>
+                                <option value="1">1 Guest</option>
+                                <option value="2">2 Guests</option>
+                                <option value="3">3 Guests</option>
+                                <option value="4">4 Guests</option>
+                                <option value="5">5 Guests</option>
+                                <option value="6">6 Guests</option>
+                                <option value="7">7 Guests</option>
+                                <option value="8">8 Guests</option>
+                            </select>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="occasion">Occasion <span>(Optional)</span></label>
+
+                            <select id="occasion" name="occasion">
+                                <option value="" selected>No special occasion</option>
+                                <option value="Birthday">Birthday</option>
+                                <option value="Anniversary">Anniversary</option>
+                                <option value="Date Night">Date Night</option>
+                                <option value="Business Meeting">Business Meeting</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="message">Special Requests <span>(Optional)</span></label>
+
+                            <textarea
+                                id="message"
+                                name="message"
+                                rows="3"
+                                placeholder="Anything we should know?"></textarea>
+                        </div>
+
+
+                        <button type="submit" class="submit-btn">
+                            <span>Request a Reservation</span>
+                            <span class="submit-arrow">↗</span>
+                        </button>
+
+                        <p class="form-disclaimer">
+                            This is a reservation request demo.
+                            Your booking is not confirmed until
+                            the cafe confirms it.
+                        </p>
+
+                        <div class="form-message" id="form-message"
+                            role="status" aria-live="polite"></div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Visit Information -->
+        <section class="visit-section">
+
+            <div class="visit-heading">
+                <span class="section-label">A LITTLE MORE ABOUT YOUR VISIT</span>
+                <h2>Before You <em>Arrive.</em></h2>
+            </div>
+
+            <div class="visit-grid">
+
+                <article class="visit-card">
+                    <span class="visit-number">01</span>
+                    <span class="visit-icon">◷</span>
+                    <h3>Opening Hours</h3>
+                    <p>Monday – Sunday</p>
+                    <strong>09:00 AM – 10:00 PM</strong>
+                </article>
+
+                <article class="visit-card">
+                    <span class="visit-number">02</span>
+                    <span class="visit-icon">✦</span>
+                    <h3>Special Moments</h3>
+                    <p>Celebrating something?</p>
+                    <strong>Tell us in your request.</strong>
+                </article>
+
+                <article class="visit-card">
+                    <span class="visit-number">03</span>
+                    <span class="visit-icon">♡</span>
+                    <h3>Need Assistance?</h3>
+                    <p>Have a question before booking?</p>
+                    <strong><a href="contact.html">Get in touch ↗</a></strong>
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- Closing Banner -->
+        <section class="reservation-banner">
+
+            <span class="section-label">WE'LL KEEP A SEAT FOR YOU</span>
+
+            <h2>Good Things Happen<br> <em>Around the Table.</em></h2>
+
+            <a href="#booking" class="banner-btn">
+                Book Your Visit <span>↗</span>
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="site-footer">
+
+        <div class="footer-main">
+
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <span class="logo-name">PAOLO</span>
+                    <span class="logo-subtitle">SINCE 2024</span>
+                </a>
+
+                <p>
+                    Good coffee, beautiful moments
+                    and a place to feel at home.
+                </p>
+            </div>
+
+            <div class="footer-links">
+                <h3>Explore</h3>
+                <a href="index.html">Home</a>
+                <a href="about.html">About us</a>
+                <a href="menu.html">Our Menu</a>
+                <a href="gallery.html">Gallery</a>
+            </div>
+
+            <div class="footer-links">
+                <h3>Get in touch</h3>
+                <a href="reservation.html">Reservation</a>
+                <a href="contact.html">Contact us</a>
+                <a href="menu.html">Order Now</a>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <span>© 2026 Paolo Cafe. All rights reserved.</span>
+            <span>MADE WITH PASSION & COFFEE.</span>
+        </div>
+
+    </footer>
+
+
+    <script src="./asstes/js/reservation.js"></script>
+
+</body>
+</html>
