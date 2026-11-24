@@ -2,7 +2,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     "use strict";
 
-    // Enable JavaScript-dependent styles
     document.documentElement.classList.add("js-enabled");
 
     // ----------------------------------------
@@ -20,19 +19,35 @@ document.addEventListener("DOMContentLoaded", () => {
             navToggle.setAttribute("aria-label", "Open navigation");
         };
 
-        navToggle.addEventListener("click", () => {
-            const isOpen = mainNav.classList.toggle("show");
+        const toggleMenu = () => {
+            const isOpen = !mainNav.classList.contains("show");
 
+            mainNav.classList.toggle("show", isOpen);
             navToggle.classList.toggle("active", isOpen);
+
             navToggle.setAttribute("aria-expanded", String(isOpen));
             navToggle.setAttribute(
                 "aria-label",
                 isOpen ? "Close navigation" : "Open navigation"
             );
+        };
+
+        navToggle.addEventListener("click", toggleMenu);
+
+        mainNav.addEventListener("click", event => {
+            if (event.target.closest("a")) {
+                closeMenu();
+            }
         });
 
-        mainNav.querySelectorAll("a").forEach(link => {
-            link.addEventListener("click", closeMenu);
+        document.addEventListener("click", event => {
+            if (
+                mainNav.classList.contains("show") &&
+                !mainNav.contains(event.target) &&
+                !navToggle.contains(event.target)
+            ) {
+                closeMenu();
+            }
         });
 
         document.addEventListener("keydown", event => {
@@ -41,18 +56,10 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
 
-        document.addEventListener("click", event => {
-            const clickedInside =
-                mainNav.contains(event.target) ||
-                navToggle.contains(event.target);
+        const desktopMedia = window.matchMedia("(min-width: 801px)");
 
-            if (!clickedInside) {
-                closeMenu();
-            }
-        });
-
-        window.addEventListener("resize", () => {
-            if (window.innerWidth > 800) {
+        desktopMedia.addEventListener("change", event => {
+            if (event.matches) {
                 closeMenu();
             }
         });
@@ -67,18 +74,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const communityNext = document.getElementById("communityNext");
 
     if (communityTrack && communityPrev && communityNext) {
-        const cards = Array.from(
-            communityTrack.querySelectorAll(".community-card")
-        );
-
-        let autoSlideInterval;
-        let isDragging = false;
-        let startX = 0;
-        let scrollStart = 0;
+        const cards = communityTrack.querySelectorAll(".community-card");
 
         const prefersReducedMotion = window.matchMedia(
             "(prefers-reduced-motion: reduce)"
-        ).matches;
+        );
+
+        const autoSlideDelay = 4500;
+
+        let autoSlideTimer = null;
+        let isDragging = false;
+        let startX = 0;
+        let scrollStart = 0;
 
         const getScrollAmount = () => {
             const firstCard = cards[0];
@@ -86,9 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!firstCard) return 300;
 
             const cardWidth = firstCard.getBoundingClientRect().width;
-            const gap = parseFloat(
-                getComputedStyle(communityTrack).gap
-            ) || 0;
+            const gap = parseFloat(getComputedStyle(communityTrack).gap) || 0;
 
             return cardWidth + gap;
         };
@@ -96,8 +101,47 @@ document.addEventListener("DOMContentLoaded", () => {
         const moveSlide = direction => {
             communityTrack.scrollBy({
                 left: getScrollAmount() * direction,
-                behavior: prefersReducedMotion ? "auto" : "smooth"
+                behavior: prefersReducedMotion.matches ? "auto" : "smooth"
             });
+        };
+
+        const stopAutoSlide = () => {
+            if (autoSlideTimer !== null) {
+                clearInterval(autoSlideTimer);
+                autoSlideTimer = null;
+            }
+        };
+
+        const startAutoSlide = () => {
+            stopAutoSlide();
+
+            if (
+                prefersReducedMotion.matches ||
+                cards.length < 2 ||
+                document.hidden
+            ) {
+                return;
+            }
+
+            autoSlideTimer = setInterval(() => {
+                const maxScroll =
+                    communityTrack.scrollWidth - communityTrack.clientWidth;
+
+                if (maxScroll <= 0) return;
+
+                if (communityTrack.scrollLeft >= maxScroll - 5) {
+                    communityTrack.scrollTo({
+                        left: 0,
+                        behavior: "smooth"
+                    });
+                } else {
+                    moveSlide(1);
+                }
+            }, autoSlideDelay);
+        };
+
+        const restartAutoSlide = () => {
+            startAutoSlide();
         };
 
         communityNext.addEventListener("click", () => {
@@ -109,36 +153,6 @@ document.addEventListener("DOMContentLoaded", () => {
             moveSlide(-1);
             restartAutoSlide();
         });
-
-        const startAutoSlide = () => {
-            if (prefersReducedMotion || cards.length < 2) return;
-
-            stopAutoSlide();
-
-            autoSlideInterval = setInterval(() => {
-                const maxScroll =
-                    communityTrack.scrollWidth -
-                    communityTrack.clientWidth;
-
-                if (communityTrack.scrollLeft >= maxScroll - 5) {
-                    communityTrack.scrollTo({
-                        left: 0,
-                        behavior: "smooth"
-                    });
-                } else {
-                    moveSlide(1);
-                }
-            }, 4500);
-        };
-
-        const stopAutoSlide = () => {
-            clearInterval(autoSlideInterval);
-        };
-
-        const restartAutoSlide = () => {
-            stopAutoSlide();
-            startAutoSlide();
-        };
 
         communityTrack.addEventListener("mouseenter", stopAutoSlide);
         communityTrack.addEventListener("mouseleave", startAutoSlide);
@@ -155,8 +169,9 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         // Mouse drag support
+
         communityTrack.addEventListener("mousedown", event => {
-            if (event.target.closest("a")) return;
+            if (event.button !== 0 || event.target.closest("a")) return;
 
             isDragging = true;
             startX = event.pageX;
@@ -169,25 +184,41 @@ document.addEventListener("DOMContentLoaded", () => {
         document.addEventListener("mousemove", event => {
             if (!isDragging) return;
 
-            const distance = event.pageX - startX;
-
-            communityTrack.scrollLeft = scrollStart - distance;
+            communityTrack.scrollLeft =
+                scrollStart - (event.pageX - startX);
         });
 
-        document.addEventListener("mouseup", () => {
+        const stopDragging = () => {
             if (!isDragging) return;
 
             isDragging = false;
             communityTrack.classList.remove("is-dragging");
             startAutoSlide();
+        };
+
+        document.addEventListener("mouseup", stopDragging);
+        window.addEventListener("blur", stopDragging);
+
+        communityTrack.addEventListener("mouseleave", stopDragging);
+
+        // Pause when the page is hidden
+
+        document.addEventListener("visibilitychange", () => {
+            if (document.hidden) {
+                stopAutoSlide();
+            } else {
+                startAutoSlide();
+            }
         });
 
-        communityTrack.addEventListener("mouseleave", () => {
-            if (!isDragging) return;
+        // Respect changes to motion preferences
 
-            isDragging = false;
-            communityTrack.classList.remove("is-dragging");
-            startAutoSlide();
+        prefersReducedMotion.addEventListener("change", event => {
+            if (event.matches) {
+                stopAutoSlide();
+            } else {
+                startAutoSlide();
+            }
         });
 
         startAutoSlide();
